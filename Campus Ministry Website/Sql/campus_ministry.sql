@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2024 at 12:19 PM
+-- Generation Time: Oct 24, 2024 at 11:06 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -35,7 +35,8 @@ CREATE TABLE `event` (
   `E_Month` int(11) NOT NULL,
   `E_Day` int(11) NOT NULL,
   `E_Religion` varchar(50) NOT NULL,
-  `E_Location` varchar(100) NOT NULL
+  `E_Location` varchar(100) NOT NULL,
+  `E_file_ref` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
