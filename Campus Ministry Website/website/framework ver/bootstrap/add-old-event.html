@@ -63,8 +63,72 @@
                                                     <h2>Add Multiple Text Fields</h2>
                                                     <form id="dynamicForm">
                                                       <div id="textFieldsContainer" class="form-group">
-                                                        <label for="inputField1">Field 1</label>
-                                                        <input type="text" class="form-control mb-2" id="inputField1" name="inputField[]">
+                                                        
+
+                                                        <!-- preset for 1st question -->
+                                                        
+                                                        <div class="input-group mb-5" id="fieldGroup${fieldCount}">
+                                                            <!-- poor fair good verygood excelent -->
+
+                                                            <div class="input-group input-group-sm mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="inputGroup-sizing-sm">Question ${fieldCount} Details</span>
+                                                                </div>
+                                                                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                                            </div>
+
+
+
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="inputGroup-sizing-sm">Poor</span>
+                                                            </div>
+                                                            
+                                                            <input type="text" class="form-control" name="inputField[]" placeholder="Field ${fieldCount}">
+
+
+
+
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="inputGroup-sizing-sm">Fair</span>
+                                                            </div>
+                                                            
+                                                            <input type="text" class="form-control" name="inputField[]" placeholder="Field ${fieldCount}">
+
+
+
+
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="inputGroup-sizing-sm">Good</span>
+                                                            </div>
+                                                            
+                                                            <input type="text" class="form-control" name="inputField[]" placeholder="Field ${fieldCount}">
+
+
+
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="inputGroup-sizing-sm">Very Good</span>
+                                                            </div>
+                                                            
+                                                            <input type="text" class="form-control" name="inputField[]" placeholder="Field ${fieldCount}">
+
+
+
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" id="inputGroup-sizing-sm">Excellent</span>
+                                                            </div>
+                                                            
+                                                            <input type="text" class="form-control" name="inputField[]" placeholder="Field ${fieldCount}">
+
+
+                                                            
+                                                            
+                                                            <div class="input-group-append">
+                                                              <button type="button" class="btn btn-danger removeField" data-id="${fieldCount}">Remove</button>
+                                                            </div>
+
+                                                            
+                                                          </div>
+
                                                       </div>
                                                       <button type="button" id="addField" class="btn btn-primary mb-3">Add Field</button>
                                                       <button type="submit" class="btn btn-success">Submit</button>
