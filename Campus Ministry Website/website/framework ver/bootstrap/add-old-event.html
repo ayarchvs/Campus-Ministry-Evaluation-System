@@ -61,7 +61,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="eventYear"  type="number" placeholder="Enter year" />
+                                                        <input class="form-control" id="eventYear"  type="number" placeholder="Enter year" min="1900" max="2100" />
                                                         <label for="eventYear">Year</label>
                                                     </div>
                                                 </div>
@@ -261,12 +261,11 @@
                                                     });
 
                                                        //Get the current year
-                                                        const currentYear = new Date().getFullYear();
+                                                         const currentYear = new Date().getFullYear();
     
-                                                        //Set min and max attributes dynamically
+                                                        // Set the input's value to the current year by default
                                                         const yearInput = document.getElementById('eventYear');
-                                                        yearInput.setAttribute('min', '1900');
-                                                        yearInput.setAttribute('max', currentYear.toString());
+                                                        yearInput.value = currentYear;
                                                   </script>
 
                                             </div>
