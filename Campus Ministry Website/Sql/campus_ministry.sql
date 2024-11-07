@@ -32,7 +32,7 @@ CREATE TABLE `event` (
   `Staff_ID` int(11) DEFAULT NULL,
   `E_Name` varchar(100) NOT NULL,
   `E_Year` int(11) NOT NULL,
-  `E_Month` int(11) NOT NULL,
+  `E_Month` varchar(11) NOT NULL,
   `E_Day` int(11) NOT NULL,
   `E_Religion` varchar(50) NOT NULL,
   `E_Location` varchar(100) NOT NULL,
