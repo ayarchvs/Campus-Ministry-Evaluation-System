@@ -1,4 +1,6 @@
 <?php
+
+/*
 // Database connection settings
 $servername = "localhost";
 $username = "root";  // Your MySQL username
@@ -12,6 +14,18 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+*/
+
+
+// use the config file   .. to go to root
+include("../config/config.php"); 
+session_start(); 
+
+
+
+// ========== Connection ========= //
+
+
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
