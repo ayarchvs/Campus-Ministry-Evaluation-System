@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $eventYear = $_POST['eventYear'];
     $religion = $_POST['religion'];
     $eventLocation = $_POST['eventLocation'];
-    $courses = $_POST['courses'];
+    //$courses = $_POST['courses'];
     
     // Handle file upload
     $file = $_FILES['excelFile'];
@@ -48,12 +48,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if file is uploaded successfully
     if ($fileError === 0) {
-        $fileExt = strtolower(end(explode('.', $fileName)));
+        $fileNameExplode = explode('.', $fileName);
+        $fileExt = strtolower(end($fileNameExplode));
         $allowed = array('xlsx');
         
         if (in_array($fileExt, $allowed)) {
             // Specify the directory for file storage
-            $uploadDir = 'D:\xampp\htdocs\Campus-Ministry-Evaluation-System\Campus Ministry Website\website\Evaluation Forms'; //just change the directory for this
+            $uploadDir = '..\..\..\Evaluation Forms'; //just change the directory for this
             
             // Ensure directory exists (you can create it manually or programmatically)
             if (!is_dir($uploadDir)) {
@@ -86,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conn->query($sql) === TRUE) {
         // Redirect to the dashboard with success message
-        header("Location: index.html?message=successful");
+        header("Location: ..\index.html?message=successful");
         exit();
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
