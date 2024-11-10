@@ -107,6 +107,10 @@
                                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                     Add Event
                                 </a>
+                                <a class="nav-link" href="event-details.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                    Event Details
+                                </a>
                             </div>
                         </div>
                         <div class="sb-sidenav-footer">

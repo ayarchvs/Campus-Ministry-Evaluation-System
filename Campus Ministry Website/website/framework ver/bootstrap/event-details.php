@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Old Event Details</title>
+        <title>Event Details</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Retreat (2023/09/11) old ver.</h1>
+                        <h1 class="mt-4">Retreat (2025/09/11)</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
@@ -596,8 +596,7 @@
 
 
 
-                    <div class="row">
-                        <div class="col-lg-6">
+                    <div class="">
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar me-1"></i>
@@ -607,17 +606,33 @@
                                 <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                             </div>
                         </div>
+
+
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar me-1"></i>
+                                    Bar Chart: Courses Distribution (Students)
+                                </div>
+                                <div class="card-body"><canvas id="myBarChart02" width="100%" height="50  "></canvas></div>
+                                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                            </div>
+                        </div>
                         <div class="col-lg-6">
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-pie me-1"></i>
-                                    Pie Chart: Course Distribution (at most how many courses combine?) bar/pie
+                                    Pie Chart: Gender Distribution 
                                 </div>
                                 <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
                                 <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                             </div>
                         </div>
                     </div>
+
+                    
 
 
 
