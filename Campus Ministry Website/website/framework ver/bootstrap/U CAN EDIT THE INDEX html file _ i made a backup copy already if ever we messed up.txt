@@ -1,0 +1,15 @@
+Note: 
+
+
+keep Event Name as Event Type
+
+
+Add E_courses in Events Table
+
+
+
+
+Ecourses is owki if blank
+
+cuz Old events have Courses data saved
+
