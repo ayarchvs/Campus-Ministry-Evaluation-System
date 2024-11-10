@@ -17,6 +17,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passSame = false;
     
 
+    // =============== NOTE =========
+
+    // for the checking of details, write it with ajax javascript thing cuz it can update without refreshing the page
+    // saving to db, will be the php
+    // doing le thing we are aiming for
+
+    // btw me not requiring you to use php, if all of these could be managed by ajax then why not XD
+
+
+    // i guess le logic for Javascript + php combi is 
+        /*
+            Prefereably write in Ajax framework + Javascript:
+            1. check inputs if empty and correct
+
+            2. show the necessary popups when btn create account is pressed
+
+            3. When every dat is correct (javascript will create the popup message to show it successful)
+                then that btn there will have the <button type="submit">  thingy
+
+            4.When submit btn pressed, send data to DB le php part i guess will be the "OK" btn when everything successful 
+                The php will just be handling the saving to database part
+
+
+
+        */
+
+
+
+    // tis be in javascript
 
     // check if fields are not empty
 
@@ -74,6 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Close the connection
     $conn->close();
+    
 
 
     
