@@ -26,4 +26,6 @@ Campus Ministry Website Folder\Evaluation Form Files\Recollection 02
 
 Todo List
 ======================================================
-will be updated soon :33
+
+[] Need to update link add-event.html 
+   -> fix da connection of LINK "back to dashboard" 
