@@ -1,24 +1,10 @@
 <?php
 
-/*
-// Database connection settings
-$servername = "localhost";
-$username = "root";  // Your MySQL username
-$password = "";      // Your MySQL password
-$dbname = "campus_ministry";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-*/
 
 
 // use the config file   .. to go to root
-include("../config/config.php"); 
+include("/config/config.php"); 
 session_start(); 
 
 

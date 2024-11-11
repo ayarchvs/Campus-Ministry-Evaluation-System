@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `event` (
   `Event_ID` int(11) NOT NULL,
   `Staff_ID` int(11) DEFAULT NULL,
-  `E_Name` varchar(100) NOT NULL,
+  `E_Type` varchar(100) NOT NULL,
   `E_Year` int(11) NOT NULL,
   `E_Month` varchar(11) NOT NULL,
   `E_Day` int(11) NOT NULL,
