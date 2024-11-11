@@ -48,11 +48,12 @@
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
-                                        <tr>
+                                        
                                             <th>Event Date</th>
                                             <th>Event Type</th>
                                             <th>Religion</th>
                                             <th>Location</th>
+                                            <th >Actions</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -61,6 +62,7 @@
                                             <th>Event Type</th>
                                             <th>Religion</th>
                                             <th>Location</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -74,6 +76,13 @@
                                                      echo "<td>". $row['E_Type']. "</td>";
                                                      echo "<td>". $row['E_Religion']. "</td>";
                                                      echo "<td>". $row['E_Location']. "</td>";
+                                                     echo "<td>
+                                                                <p class=\"mb-1 text-center \">
+                                                                    <a href=\"\">view</a> 
+                                                                    <span>&nbsp &nbsp | &nbsp &nbsp </span>
+                                                                    <a href=\"\">options</a>
+                                                                </p>
+                                                            </td>";
                                                      echo "</tr>";
                                                 }
                                             } else {
