@@ -66,7 +66,7 @@ include("config/config.php");
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="index.html">Have an account? Go to login</a></div>
+                                    <div class="small"><a href="index.php">Have an account? Go to login</a></div>
                                 </div>
                             </div>
                         </div>
