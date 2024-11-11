@@ -111,6 +111,10 @@
                                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                     Event Details
                                 </a>
+                                <a class="nav-link" href="staff-list.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                    Staff List
+                                </a>
                             </div>
                         </div>
                         <div class="sb-sidenav-footer">
