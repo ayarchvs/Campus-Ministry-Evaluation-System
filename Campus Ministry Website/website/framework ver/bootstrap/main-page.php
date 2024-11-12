@@ -84,13 +84,14 @@
                                                                 </button>
                                                                 <span class=\"mx-2\">|</span>
                                                                 <div class=\"dropdown\">
-                                                                    <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                                                    <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton-<?=". $row['Event_ID']." ?>\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                                                                         Options
                                                                     </button>
                                                                     <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
-                                                                        <a class=\"dropdown-item\" href=\"#\">Update</a>
-                                                                        <a class=\"dropdown-item\" href=\"#\">Delete action</a>
+                                                                        <button class=\"dropdown-item    update-btn\" data-id=\"". $row['Event_ID']."\">Update</a>
+                                                                        <button class=\"dropdown-item    delete-btn\" data-id=\"". $row['Event_ID']."\">Delete action</a>
                                                                     </div>
+                                                                </div>
                                                                 </div>
                                                             </div>
                                                         </td>";
@@ -100,7 +101,7 @@
                                                 echo "No records found.";
                                             }
 
-                                            // YYYY/MM/DD
+                                            // YYYY/MM/DD   /// <a class=\"dropdown-item\" href=\"#\" class=\"update-btn\"   // removed href so no redirect page
                                         ?>
                                     </tbody>
                                 </table>
@@ -136,7 +137,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">  // needed for the options dropdown // need dl local </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"> // needed for the options dropdown // need dl local</script>
     
-        <script src="js/view-event.js"> </script>
+        <script src="js/options-event.js"> </script>
                                         <!--<script src="js/delete-event.js"> </script>-->
     
     </body>

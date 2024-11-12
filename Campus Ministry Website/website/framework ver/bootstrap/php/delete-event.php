@@ -1,32 +1,25 @@
 <?php
-// config for database connection
-include('../config/config.php'); 
+// delete-event.php
 
-// Check if the data sent
-if(isset($_POST['username']) && isset($_POST['email'])) {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
+include "../config/config.php";  // Include your DB connection
 
+// Check if ID is provided via GET
+if (isset($_GET['id'])) {
+    $eventId = $_GET['id'];
 
-    // to stop em from adding sql querries in input field aka do cheat codes XD
-    $username = mysqli_real_escape_string($conn, $username);
-    $email = mysqli_real_escape_string($conn, $email);
+    // SQL query to delete the event from the database
+    $query = "DELETE FROM event WHERE Event_ID = '$eventId'";
 
-
-    // mi SQL query 
-    $query = "INSERT INTO users (username, email) VALUES ('$username', '$email')";
-    
-    
     // Execute the query
-    if(mysqli_query($conn, $query)) {
-        echo "Event added successfully!";
+    if ($conn->query($query) === TRUE) {
+        // Respond with success
+        echo json_encode(['status' => 'success', 'message' => 'Event deleted successfully.']);
     } else {
-        echo "Error: " . mysqli_error($conn);
+        // Respond with an error if deletion fails
+        echo json_encode(['status' => 'error', 'message' => 'Error deleting event: ' . $conn->error]);
     }
 } else {
-    echo "Please fill up required(*) fields.";
+    // If no ID is provided
+    echo json_encode(['status' => 'error', 'message' => 'No ID provided.']);
 }
-
-// Close the database connection
-mysqli_close($conn);
 ?>
