@@ -97,5 +97,8 @@ $result = mysqli_query($conn, $query);
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"></script>
 
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0A1qlV3zV9fAkhbsN+Tj8z5lZsU1IQ8lJzkhhALfYlZq2dyK" crossorigin="anonymous"></script>
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    
     </body>
 </html>
