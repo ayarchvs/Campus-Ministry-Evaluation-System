@@ -78,13 +78,13 @@
                                                      echo "<td>". $row['E_Religion']. "</td>";
                                                      echo "<td>". $row['E_Location']. "</td>";
                                                      echo "<td>
-                                                            <div class=\"d-flex align-items-center justify-content-center\">
-                                                                <button class=\"btn btn-secondary view-btn\" data-id=\"" . $row['Event_ID'] . "\">
+                                                            <div class=\"d-flex align-items-center \">
+                                                                <button class=\"btn btn-primary view-btn \" data-id=\"" . $row['Event_ID'] . "\">
                                                                     View
                                                                 </button>
-                                                                <span class=\"mx-2\">|</span>
+                                                                <span class=\"mx-2\"> </span>
                                                                 <div class=\"dropdown\">
-                                                                    <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton-<?=". $row['Event_ID']." ?>\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                                                    <button class=\"btn btn-warning dropdown-toggle options-btn\" type=\"button\" id=\"dropdownMenuButton-<?=". $row['Event_ID']." ?>\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                                                                         Options
                                                                     </button>
                                                                     <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
@@ -101,7 +101,7 @@
                                                 echo "No records found.";
                                             }
 
-                                            // YYYY/MM/DD   /// <a class=\"dropdown-item\" href=\"#\" class=\"update-btn\"   // removed href so no redirect page
+                                            // YYYY/MM/DD   /// <a class=\"dropdown-item\" href=\"#\" class=\"update-btn\"   // removed href so no redirect page  , justify-content-center
                                         ?>
                                     </tbody>
                                 </table>
@@ -123,6 +123,94 @@
                 </footer>
             </div>
         </div>
+
+
+
+
+        <!-- Modal for Updating event -->
+        <div class="modal fade" id="updateEventModal" tabindex="-1" aria-labelledby="updateEventModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateEventModalLabel">Update Event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="updateEventForm">
+                <input type="hidden" id="updateEventId" name="eventId">
+                
+                <!-- Date -->
+                <div class="row mb-3">
+                    <!-- Month Field -->
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <input class="form-control" id="updateEventMonth" name="eventMonth" type="number" placeholder="Day" min="1" max="12" required />
+                            <label for="updateEventMonth">Month</label>
+                        </div>
+                    </div>
+
+                    <!-- Day Field -->
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <input class="form-control" id="updateEventDay" name="eventDay" type="number" placeholder="Day" min="1" max="31" required />
+                            <label for="updateEventDay">Day</label>
+                        </div>
+                    </div>
+
+                    <!-- Year Field -->
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <input class="form-control" id="updateEventYear" name="eventYear" type="number" placeholder="Enter year" min="1900" max="2100" required />
+                            <label for="updateEventYear">Year</label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Event Type -->
+                <div class="form-floating mb-3">
+                    <select class="form-control" id="updateEventType" name="eventType" aria-label="Event Type" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="Retreat">Retreat</option>
+                        <option value="Recollection 02">Recollection 02</option>
+                        <option value="Recollection 01">Recollection 01</option>
+                    </select>
+                    <label for="updateEventType">Event Type</label>
+                </div>
+
+                <!-- Religion -->
+                <div class="form-floating mb-3">
+                    <select class="form-control" id="updateEventReligion" name="religion" aria-label="Religion" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="Catholic">Catholic</option>
+                        <option value="Muslim">Muslim</option>
+                        <option value="Non-Christian">Non-Christian</option>
+                    </select>
+                    <label for="updateEventReligion">Religion</label>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="updateEventLocation" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="updateEventLocation" name="location" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Event</button>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
