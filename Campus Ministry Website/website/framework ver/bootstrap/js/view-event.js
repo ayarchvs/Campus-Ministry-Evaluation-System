@@ -19,7 +19,8 @@ $(document).ready(function() {
                     const data = JSON.parse(response); // Only parse if response is a string
             
                     if (data.status === 'success') {
-                        window.location.replace("event-details.php?id=" + data.eventData.Event_ID); // Redirect
+                        console.log(data.eventData.Event_ID);
+                        window.location.href = "event-details.php?id=" + data.eventData.Event_ID; // Redirect
                     } else {
                         console.log('Failed to fetch event details:', data.message);
                     }
