@@ -35,6 +35,7 @@
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 Event List
+                                
                             </div>
                             <?php
                                 include "config/config.php";
@@ -77,12 +78,22 @@
                                                      echo "<td>". $row['E_Religion']. "</td>";
                                                      echo "<td>". $row['E_Location']. "</td>";
                                                      echo "<td>
-                                                                <p class=\"mb-1 text-center \">
-                                                                    <a href=\"\">view</a> 
-                                                                    <span>&nbsp &nbsp | &nbsp &nbsp </span>
-                                                                    <a href=\"\">options</a>
-                                                                </p>
-                                                            </td>";
+                                                            <div class=\"d-flex align-items-center justify-content-center\">
+                                                                <button class=\"btn btn-secondary view-btn\" data-id=\"" . $row['Event_ID'] . "\">
+                                                                    View
+                                                                </button>
+                                                                <span class=\"mx-2\">|</span>
+                                                                <div class=\"dropdown\">
+                                                                    <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                                                        Options
+                                                                    </button>
+                                                                    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
+                                                                        <a class=\"dropdown-item\" href=\"#\">Update</a>
+                                                                        <a class=\"dropdown-item\" href=\"#\">Delete action</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>";
                                                      echo "</tr>";
                                                 }
                                             } else {
@@ -118,5 +129,15 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+        
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"> // needed for the options dropdown // need dl local </script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">  // needed for the options dropdown // need dl local </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"> // needed for the options dropdown // need dl local</script>
+    
+        <script src="js/view-event.js"> </script>
+                                        <!--<script src="js/delete-event.js"> </script>-->
+    
     </body>
 </html>
