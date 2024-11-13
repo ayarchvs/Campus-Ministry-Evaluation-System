@@ -182,7 +182,7 @@
                 <div class="form-floating mb-3">
                     <select class="form-control" id="updateEventReligion" name="religion" aria-label="Religion" required>
                         <option value="" disabled selected>Select</option>
-                        <option value="Catholic">Catholic</option>
+                        <option value="Roman Catholic"> Roman Catholic</option>
                         <option value="Muslim">Muslim</option>
                         <option value="Non-Christian">Non-Christian</option>
                     </select>

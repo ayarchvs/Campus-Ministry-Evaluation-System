@@ -156,19 +156,24 @@ $(document).ready(function() {
             type: 'POST',
             data: updatedData,
             success: function (response) {
+                console.log("AJAX Response (raw):", response);  // Log the raw response
+            
                 try {
-                    const data = JSON.parse(response);
+                    const data = JSON.parse(response);  // Try to parse JSON
+                    console.log("Parsed JSON data:", data);
+            
                     if (data.status === 'success') {
-                        alert('Event updated successfully!');
-                        location.reload();  // Reload the page to show updated data
+                        alert('Staff Details updated successfully!');
+                        $('#updateStaffModal').modal('hide');
                     } else {
-                        alert('Failed to update event: ' + data.message);
+                        alert('Failed to update Staff Details: ' + data.message);
                     }
                 } catch (error) {
                     console.error('Error parsing JSON:', error);
                     alert('Error processing the update response.');
                 }
             },
+            
             error: function (xhr, status, error) {
                 console.error("AJAX error:", status, error);
                 alert('An error occurred while updating the event.');
