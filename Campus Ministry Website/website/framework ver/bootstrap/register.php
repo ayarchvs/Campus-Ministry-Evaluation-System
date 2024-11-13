@@ -41,7 +41,7 @@ include("config/config.php");
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input class="form-control" id="inputEmail" name="inputEmail" type="text" placeholder="*Enter staff id" required />
+                                            <input class="form-control" id="inputEmail" name="inputEmail" type="text" placeholder="*Enter staff email" required />
                                             <span class="input-group-text" id="basic-addon2">@adzu.edu.ph</span>
                                         </div>
                                         <div class="row mb-3">

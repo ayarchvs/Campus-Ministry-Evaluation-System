@@ -7,6 +7,18 @@ include "../config/config.php";  // Include your DB connection
 if (isset($_GET['id'])) {
     $staffId = $_GET['id'];
 
+    // Check if the staff member is associated with any events
+    $checkEventQuery = "SELECT COUNT(*) AS count FROM event WHERE Staff_ID = '$staffId'";
+    $result = $conn->query($checkEventQuery);
+    $data = $result->fetch_assoc();
+
+    // If there are events associated with the staff member
+    if ($data['count'] > 0) {
+        // Respond with an error message
+        echo json_encode(['status' => 'error', 'message' => 'This staff member is assigned to an event and cannot be deleted.']);
+        exit;  // Stop the script execution
+    }
+
     // SQL query to delete the staff from the database
     $query = "DELETE FROM staff WHERE Staff_ID = '$staffId'";
 
