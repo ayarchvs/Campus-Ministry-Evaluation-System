@@ -104,8 +104,10 @@ include("config/config.php");
 
 
 
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!-- cuz the top part is j querry  le prepare make doc ready to listen -->
     
+
     <!-- AJAX script -->
     <script src="js/button-functions.js"></script>
 
