@@ -1,31 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("registerForm");
-
-    form.addEventListener("submit", function (event) {
+    const registerForm = document.getElementById("registerForm");
+    const createAccBtn = document.getElementById("createAccBtn");
+    
+    createAccBtn.addEventListener("click", function (event) {
+       
         event.preventDefault();
 
-       
-        const formData = new FormData(form);
-
+      //popup
+        const confirmation = confirm("Are you sure to create this account?");
         
-        fetch("php/register-staff.php", {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert(data.message);
-                form.reset();
-                //direct to stafflist
-                window.location.href = "staff-list.php";
-            } else {
-                alert(data.message);
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("An error occurred. Please try again.");
-        });
+        if (confirmation) {
+            //If user confirms, submit form data via AJAX or standard form submission
+            registerForm.submit();
+            // direct to staff list.php
+            window.location.href = "staff-list.php";
+        }
+        // If the user presses no, the form submission is canceled and nothing happens
     });
 });

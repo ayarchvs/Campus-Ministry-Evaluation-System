@@ -102,6 +102,7 @@ include("config/config.php");
         </div>
     </div>
 
+    </script>
     <!-- AJAX script -->
     <script src="js/button-functions.js"></script>
 </body>
