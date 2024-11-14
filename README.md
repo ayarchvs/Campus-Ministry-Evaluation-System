@@ -30,6 +30,25 @@ Todo List
 >[!IMPORTANT]
 # 🟢New Features on this update:
 
+## ❄️0. New Features: since last update unlisted 
+ - Event List -
+  1. Event list page now shows eventlist
+  2. Event list data is from db (connected)
+  3. Changed the collumns for better presentation
+  4. changed the old btns look
+  5. hid the update and delete button under options btn for +1 layer of confirmation
+  6. btns are working now, detailed update is listed below
+
+- Register Page -
+  1. Register page has type now
+  2. Register page can submit to db now
+
+- Staff Page -
+  1. added a staff page for management
+  2. shows staff list from db
+  3. has option btns (update and delete)
+  
+
 ## ❄️1. New Feature: View Event btn now works
  -> 1. added btns "view" & "Options" (this was just a link before)
  -> 2.  View now successfully brings you to the event detail page
@@ -80,7 +99,7 @@ Todo List
 
   .
 
-  ## ❄️8.  (Semil maybe)  [Add Event (normal ver.) = add-event-.php ]  
+  ## ❄️✨8.  (Semil maybe)  [Add Event (normal ver.) = add-event-.php ]  
  -> 1. fix the handing of missing info (do le pop up message that field is not filled yet )
  -> 2. can get ref from files related to update feature "please fill out on field thing"
  -> 3. do le same thing for no file ref yet
@@ -139,7 +158,7 @@ Todo List
                          -> 4.  All of them can view any of the events
 
 
-## ❄️7.  (Kuroe)  [Event Details = event-details.php ]  
+## ❄️7.  (Kuroe next)  [Event Details = event-details.php ]  
  -> 1. use the id sent from main-page.php (iz in the url now) 
  -> 2. Logic: use php to grab that data from url
 
