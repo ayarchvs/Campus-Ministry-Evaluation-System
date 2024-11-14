@@ -4,7 +4,7 @@
 
 
 // use the config file   .. to go to root
-include("/config/config.php"); 
+include("../config/config.php"); 
 session_start(); 
 
 
@@ -68,12 +68,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare the SQL statement to insert event data into the database
-    $sql = "INSERT INTO event (E_Name, E_Year, E_Month, E_Day, E_Religion, E_Location, E_file_ref) 
+    $sql = "INSERT INTO event (E_Type, E_Year, E_Month, E_Day, E_Religion, E_Location, E_file_ref) 
             VALUES ('$eventType', '$eventYear', '$eventMonth', '$eventDay', '$religion', '$eventLocation', '$fileName')";
 
     if ($conn->query($sql) === TRUE) {
         // Redirect to the dashboard with success message
-        header("Location: ..\index.html?message=successful");
+        header("Location: ..\main-page.php");
         exit();
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
