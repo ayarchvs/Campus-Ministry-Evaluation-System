@@ -14,7 +14,7 @@ include("config/config.php");
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-primary">
+<body class="bg-primary" style="background-image: url('assets/img/background.jpg'); background-size: cover; background-position: center;">
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
             <main>
@@ -75,7 +75,7 @@ include("config/config.php");
             </main>
         </div>
         <div id="layoutAuthentication_footer">
-            <footer class="py-4 bg-light mt-auto">
+            <footer class="py-4 mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; Your Website 2023</div>
