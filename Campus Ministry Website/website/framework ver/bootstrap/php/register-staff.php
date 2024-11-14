@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $inputEmail = trim($_POST['inputEmail']) . '@adzu.edu.ph';
     $inputPassword = $_POST['inputPassword'];
     $inputPasswordConfirm = $_POST['inputPasswordConfirm'];
+    $inputType = $_POST['inputType'];
 
     //verify passwords match
     if ($inputPassword !== $inputPasswordConfirm) {
@@ -21,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     
     $name = $inputLastName . ', ' . $inputFirstName;
-    $staffType = 'default'; // not final, to be updated
+    
 
  
     $stmt = $conn->prepare("INSERT INTO Staff (S_Name, S_Email, S_Password, S_Type) VALUES (?, ?, ?, ?)");
@@ -31,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     
-    $stmt->bind_param("ssss", $name, $inputEmail, $hashedPassword, $staffType);
+    $stmt->bind_param("ssss", $name, $inputEmail, $hashedPassword, $inputType);
     if ($stmt->execute()) {
         echo json_encode(['success' => true, 'message' => 'Account created successfully!']);
     } else {

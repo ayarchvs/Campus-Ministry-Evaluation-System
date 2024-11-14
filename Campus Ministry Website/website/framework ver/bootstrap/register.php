@@ -41,7 +41,7 @@ include("config/config.php");
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input class="form-control" id="inputEmail" name="inputEmail" type="text" placeholder="*Enter staff id" required />
+                                            <input class="form-control" id="inputEmail" name="inputEmail" type="text" placeholder="*Enter staff email" required />
                                             <span class="input-group-text" id="basic-addon2">@adzu.edu.ph</span>
                                         </div>
                                         <div class="row mb-3">
@@ -58,15 +58,27 @@ include("config/config.php");
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-floating mb-3">
+                                                <select class="form-control" id="inputType" name="inputType" required>
+                                                    <option value="" disabled selected>Select</option>
+                                                    <option value="Developer">Developer</option>
+                                                    <option value="Admin">Admin</option>
+                                                    <option value="Retreat">Retreat</option>
+                                                    <option value="Recollection 01">Recollection 01</option>
+                                                    <option value="Recollection 02">Recollection 02</option>
+                                                </select>
+                                                <label for="Account">Account Type</label>
+                                            </div>
+                                    
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid">
-                                                <button class="btn btn-primary btn-block" type="submit" id="createAccBtn">Create Account</button>
+                                                <button class="btn btn-primary btn-block" id="createAccBtn">Create Account</button> <!-- removed: type="submit"  for manual actions -->
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="index.html">Have an account? Go to login</a></div>
+                                    <div class="small"><a href="main-page.php">Back to dashboard</a></div>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +102,15 @@ include("config/config.php");
         </div>
     </div>
 
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  <!-- cuz the top part is j querry  le prepare make doc ready to listen -->
+    
+
     <!-- AJAX script -->
     <script src="js/button-functions.js"></script>
+
+    
 </body>
 </html>
