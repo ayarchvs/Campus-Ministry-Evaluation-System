@@ -1,19 +1,7 @@
 <?php
 
+include '../config/config.php';
 
-
-
-// use the config file   .. to go to root
-include("/config/config.php"); 
-session_start(); 
-
-
-
-// ========== Connection ========= //
-
-
-
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $eventType = $_POST['eventType'];
@@ -21,65 +9,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $eventDay = $_POST['eventDay'];
     $eventYear = $_POST['eventYear'];
     $religion = $_POST['religion'];
-    $eventLocation = $_POST['eventLocation'];
-    //$courses = $_POST['courses'];
-    
+    $location = $_POST['eventLocation'];
+
     // Handle file upload
-    $file = $_FILES['excelFile'];
-    $fileName = $file['name'];
-    $fileTmpName = $file['tmp_name'];
-    $fileSize = $file['size'];
-    $fileError = $file['error'];
-    $fileType = $file['type'];
+    $fileRef = null;
+    if (isset($_FILES['excelFile']) && $_FILES['excelFile']['error'] == 0) {
+        $uploadDir = '../Evaluation Forms/';
+        $fileRef = $uploadDir . basename($_FILES['excelFile']['name']);
 
-    // Check if file is uploaded successfully
-    if ($fileError === 0) {
-        $fileNameExplode = explode('.', $fileName);
-        $fileExt = strtolower(end($fileNameExplode));
-        $allowed = array('xlsx');
-        
-        if (in_array($fileExt, $allowed)) {
-            // Specify the directory for file storage
-            $uploadDir = '..\..\..\Evaluation Forms'; //just change the directory for this
-            
-            // Ensure directory exists (you can create it manually or programmatically)
-            if (!is_dir($uploadDir)) {
-                echo "Directory does not exist.";
-                exit();
-            }
-            
-            // Use the original file name for upload
-            $fileDestination = $uploadDir . DIRECTORY_SEPARATOR . $fileName;
-
-            // Move the uploaded file to the specified folder
-            if (move_uploaded_file($fileTmpName, $fileDestination)) {
-                // File uploaded successfully
-            } else {
-                echo "There was an error moving the uploaded file.";
-                exit();
-            }
-        } else {
-            echo "You cannot upload files of this type.";
-            exit();
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
         }
-    } else {
-        echo "There was an error uploading your file.";
-        exit();
+
+        if (!move_uploaded_file($_FILES['excelFile']['tmp_name'], $fileRef)) {
+            echo "File upload failed.";
+            exit;
+        }
     }
 
-    // Prepare the SQL statement to insert event data into the database
-    $sql = "INSERT INTO event (E_Name, E_Year, E_Month, E_Day, E_Religion, E_Location, E_file_ref) 
-            VALUES ('$eventType', '$eventYear', '$eventMonth', '$eventDay', '$religion', '$eventLocation', '$fileName')";
+    // Insert data into the database
+    $sql = "INSERT INTO event (E_Type, E_Year, E_Month, E_Day, E_Religion, E_Location, E_file_ref) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("siissss", $eventType, $eventYear, $eventMonth, $eventDay, $religion, $location, $fileRef);
 
-    if ($conn->query($sql) === TRUE) {
-        // Redirect to the dashboard with success message
-        header("Location: ..\index.html?message=successful");
-        exit();
+    if ($stmt->execute()) {
+        echo "success";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $stmt->error;
     }
 
-    // Close the connection
+    $stmt->close();
     $conn->close();
+} else {
+    echo "Invalid request.";
 }
 ?>
