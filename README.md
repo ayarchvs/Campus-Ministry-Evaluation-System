@@ -78,6 +78,13 @@ Todo List
 ## ❄️✨7. Changed my Religion XD Fixed: all religion from Catholic to Roman Catholic
   -> 1. changed in main-page.php, add event page, add old event page, and database (for look only)
 
+  .
+
+  ## ❄️8.  (Semil maybe)  [Add Event (normal ver.) = add-event-.php ]  
+ -> 1. fix the handing of missing info (do le pop up message that field is not filled yet )
+ -> 2. can get ref from files related to update feature "please fill out on field thing"
+ -> 3. do le same thing for no file ref yet
+
 
 
 .
@@ -95,7 +102,7 @@ Todo List
 
 .
 
-## ❄️3.  (Semil maybe)  [Add Event (normal ver.) = add-event-.php ]  
+## ~~❄️3.  (Semil maybe)  [Add Event (normal ver.) = add-event-.php ]~~
  -> 1. fix the handing of missing info (do le pop up message that field is not filled yet )
  -> 2. can get ref from files related to update feature "please fill out on field thing"
  -> 3. do le same thing for no file ref yet
