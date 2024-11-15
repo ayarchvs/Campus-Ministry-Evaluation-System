@@ -41,7 +41,9 @@
                                 include "config/config.php";
 
                                 // Create a SQL query to select all data from the Events table
-                                $query = "SELECT * FROM `event`";
+                                $query = "SELECT event.*, staff.S_Name AS Staff_Name FROM `event`
+                                JOIN `staff` ON event.Staff_ID = staff.Staff_ID";
+
                             
                                 // Execute the query
                                 $result = mysqli_query($conn, $query);
@@ -54,6 +56,7 @@
                                             <th>Event Type</th>
                                             <th>Religion</th>
                                             <th>Location</th>
+                                            <th>Created By</th>
                                             <th >Actions</th>
                                         </tr>
                                     </thead>
@@ -63,6 +66,7 @@
                                             <th>Event Type</th>
                                             <th>Religion</th>
                                             <th>Location</th>
+                                            <th>Created By</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>
@@ -77,6 +81,7 @@
                                                      echo "<td>". $row['E_Type']. "</td>";
                                                      echo "<td>". $row['E_Religion']. "</td>";
                                                      echo "<td>". $row['E_Location']. "</td>";
+                                                     echo "<td>". $row['Staff_Name']. "</td>";
                                                      echo "<td>
                                                             <div class=\"d-flex align-items-center \">
                                                                 <button class=\"btn btn-primary view-btn \" data-id=\"" . $row['Event_ID'] . "\">
