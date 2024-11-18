@@ -1,8 +1,20 @@
 <?php
-
 include '../config/config.php';
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Ensure the user is logged in and Staff_ID is available
+    if (!isset($_SESSION['Staff_ID'])) {
+        echo "<script>
+                alert('You must be logged in to add an event.');
+                window.location.href = '../index.php';
+              </script>";
+        exit;
+    }
+
+    // Get logged-in Staff_ID from session
+    $staff_id = $_SESSION['Staff_ID'];
+
     // Get form data
     $eventType = $_POST['eventType'];
     $eventMonth = $_POST['eventMonth'];
@@ -28,10 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert data into the database
-    $sql = "INSERT INTO event (E_Type, E_Year, E_Month, E_Day, E_Religion, E_Location, E_file_ref) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO event (Staff_ID, E_Type, E_Year, E_Month, E_Day, E_Religion, E_Location, E_file_ref) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("siissss", $eventType, $eventYear, $eventMonth, $eventDay, $religion, $location, $fileRef);
+    $stmt->bind_param("isiiisss", $staff_id, $eventType, $eventYear, $eventMonth, $eventDay, $religion, $location, $fileRef);
 
     if ($stmt->execute()) {
         echo "success";
