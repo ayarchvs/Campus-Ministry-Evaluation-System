@@ -9,6 +9,10 @@ if (isset($_POST['staffFirstName'], $_POST['staffLastName'], $_POST['staffType']
 
     // Retrieve posted data
     //$staffID = $_POST['staffId'];
+
+
+
+
     $staffFirstName = $_POST['staffFirstName'];
     $staffLastName = $_POST['staffLastName'];
     $staffType = $_POST['staffType'];
@@ -23,7 +27,7 @@ if (isset($_POST['staffFirstName'], $_POST['staffLastName'], $_POST['staffType']
     $hashedPassword = password_hash($staffPassword, PASSWORD_DEFAULT);
 
     // SQL query to update staff data
-    $query = "INSERT INTO staff (S_Name, S_Type, S_Password, S_Email) VALUES  ('$Name', '$staffType', '$hashedPassword', '$staffEmail')";
+    $query = "INSERT INTO staff (S_Name, S_Type, S_Password, S_Email) VALUES  ('$Name', '$staffType', '$hashedPassword', '$staffEmail"."@adzu.edu.ph"."')";
     $result = $conn->query($query);
 
     if (!$result) {
