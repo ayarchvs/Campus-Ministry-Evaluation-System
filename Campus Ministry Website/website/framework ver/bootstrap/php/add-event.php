@@ -1,27 +1,31 @@
 <?php
 include '../config/config.php';
+include '../access_control.php';  // Include the access control file
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ensure the user is logged in and Staff_ID is available
     if (!isset($_SESSION['Staff_ID'])) {
-        echo "<script>
-                alert('You must be logged in to add an event.');
-                window.location.href = '../index.php';
-              </script>";
+        echo "You must be logged in to add an event.";
         exit;
     }
 
     // Get logged-in Staff_ID from session
     $staff_id = $_SESSION['Staff_ID'];
 
-    // Get form data
-    $eventType = $_POST['eventType'];
-    $eventMonth = $_POST['eventMonth'];
-    $eventDay = $_POST['eventDay'];
-    $eventYear = $_POST['eventYear'];
-    $religion = $_POST['religion'];
-    $location = $_POST['eventLocation'];
+    // Get and sanitize form data
+    $eventType = filter_input(INPUT_POST, 'eventType', FILTER_SANITIZE_STRING);
+    $eventMonth = filter_input(INPUT_POST, 'eventMonth', FILTER_VALIDATE_INT);
+    $eventDay = filter_input(INPUT_POST, 'eventDay', FILTER_VALIDATE_INT);
+    $eventYear = filter_input(INPUT_POST, 'eventYear', FILTER_VALIDATE_INT);
+    $religion = filter_input(INPUT_POST, 'religion', FILTER_SANITIZE_STRING);
+    $location = filter_input(INPUT_POST, 'eventLocation', FILTER_SANITIZE_STRING);
+
+    // Check if the user has permission to add this event type
+    if (!can_manage_event($eventType)) {
+        echo "You do not have permission to add this type of event.";
+        exit;
+    }
 
     // Handle file upload
     $fileRef = null;
@@ -54,6 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
     $conn->close();
 } else {
-    echo "Invalid request.";
+    echo "Invalid request method.";
 }
 ?>

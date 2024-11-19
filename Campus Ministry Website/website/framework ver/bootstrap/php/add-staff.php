@@ -1,18 +1,9 @@
 <?php
-// add-staff.php
 
 include "../config/config.php";  // Include your DB connection
 
-// Check if ID is provided via POST
 if (isset($_POST['staffFirstName'], $_POST['staffLastName'], $_POST['staffType'], $_POST['staffEmail'], $_POST['staffPassword'])) {
-    
-
     // Retrieve posted data
-    //$staffID = $_POST['staffId'];
-
-
-
-
     $staffFirstName = $_POST['staffFirstName'];
     $staffLastName = $_POST['staffLastName'];
     $staffType = $_POST['staffType'];
@@ -21,23 +12,35 @@ if (isset($_POST['staffFirstName'], $_POST['staffLastName'], $_POST['staffType']
 
     $Name = $staffLastName . ", " . $staffFirstName;  // Concatenate names
 
-
-
     // Hash the password using bcrypt
     $hashedPassword = password_hash($staffPassword, PASSWORD_DEFAULT);
 
-    // SQL query to update staff data
-    $query = "INSERT INTO staff (S_Name, S_Type, S_Password, S_Email) VALUES  ('$Name', '$staffType', '$hashedPassword', '$staffEmail"."@adzu.edu.ph"."')";
-    $result = $conn->query($query);
+    // Determine if the account is an admin based on the staffType
+    $isAdmin = ($staffType === 'Admin') ? 1 : 0;
 
-    if (!$result) {
-        // If query fails, return the error message in JSON
-        echo json_encode(['status' => 'error', 'message' => $conn->error]);
+    // Prepare the SQL statement
+    $query = "INSERT INTO staff (S_Name, S_Type, S_Password, S_Email, is_admin) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($query);
+
+    if ($stmt) {
+        // Bind parameters
+        $fullEmail = $staffEmail . "@adzu.edu.ph";
+        $stmt->bind_param("ssssi", $Name, $staffType, $hashedPassword, $fullEmail, $isAdmin);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo json_encode(['status' => 'success']);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => $stmt->error]);
+        }
+
+        $stmt->close();
     } else {
-        echo json_encode(['status' => 'success']);
+        echo json_encode(['status' => 'error', 'message' => $conn->error]);
     }
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Incomplete data provided.']);
 }
 
+$conn->close();
 ?>

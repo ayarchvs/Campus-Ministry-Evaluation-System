@@ -37,17 +37,31 @@
                                 Event List
                                 
                             </div>
+
                             <?php
-                                include "config/config.php";
+                            include("config/config.php");
+                            include("access_control.php");
 
-                                // Create a SQL query to select all data from the Events table
-                                $query = "SELECT event.*, staff.S_Name AS Staff_Name FROM `event`
-                                JOIN `staff` ON event.Staff_ID = staff.Staff_ID";
+                            // Check if user is logged in
+                            if (!isset($_SESSION['Staff_ID'])) {
+                                header("Location: login.php");
+                                exit;
+                            }
 
-                            
-                                // Execute the query
-                                $result = mysqli_query($conn, $query);
+                            // Fetch events based on user role
+                            $allowed_event_types = get_allowed_event_types();
+                            $event_type_placeholders = implode(',', array_fill(0, count($allowed_event_types), '?'));
+
+                            $query = "SELECT event.*, staff.S_Name AS Staff_Name FROM `event`
+                                    JOIN `staff` ON event.Staff_ID = staff.Staff_ID
+                                    WHERE event.E_Type IN ($event_type_placeholders)";
+
+                            $stmt = $conn->prepare($query);
+                            $stmt->bind_param(str_repeat('s', count($allowed_event_types)), ...$allowed_event_types);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
                             ?>
+
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
@@ -71,43 +85,22 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <?php
-                                             // Check if the query returned any results
-                                            if (mysqli_num_rows($result) > 0) {
-                                                // Fetch and display each row of data
-                                                while($row = mysqli_fetch_assoc($result)) {
-                                                     echo "<tr>";
-                                                     echo "<td>". $row['E_Year']. " / " . $row['E_Month']. " / " . $row['E_Day']. "</td>";
-                                                     echo "<td>". $row['E_Type']. "</td>";
-                                                     echo "<td>". $row['E_Religion']. "</td>";
-                                                     echo "<td>". $row['E_Location']. "</td>";
-                                                     echo "<td>". $row['Staff_Name']. "</td>";
-                                                     echo "<td>
-                                                            <div class=\"d-flex align-items-center \">
-                                                                <button class=\"btn btn-primary view-btn \" data-id=\"" . $row['Event_ID'] . "\">
-                                                                    View
-                                                                </button>
-                                                                <span class=\"mx-2\"> </span>
-                                                                <div class=\"dropdown\">
-                                                                    <button class=\"btn btn-warning dropdown-toggle options-btn\" type=\"button\" id=\"dropdownMenuButton-<?=". $row['Event_ID']." ?>\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                                                                        Options
-                                                                    </button>
-                                                                    <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">
-                                                                        <button class=\"dropdown-item    update-btn\" data-id=\"". $row['Event_ID']."\">Update</a>
-                                                                        <button class=\"dropdown-item    delete-btn\" data-id=\"". $row['Event_ID']."\">Delete action</a>
-                                                                    </div>
-                                                                </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>";
-                                                     echo "</tr>";
-                                                }
-                                            } else {
-                                                echo "No records found.";
-                                            }
-
-                                            // YYYY/MM/DD   /// <a class=\"dropdown-item\" href=\"#\" class=\"update-btn\"   // removed href so no redirect page  , justify-content-center
-                                        ?>
+                                        <?php while ($row = $result->fetch_assoc()): ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($row['E_Year'] . '/' . $row['E_Month'] . '/' . $row['E_Day']) ?></td>
+                                        <td><?= htmlspecialchars($row['E_Type']) ?></td>
+                                        <td><?= htmlspecialchars($row['E_Religion']) ?></td>
+                                        <td><?= htmlspecialchars($row['E_Location']) ?></td>
+                                        <td><?= htmlspecialchars($row['Staff_Name']) ?></td>
+                                        <td>
+                                            <button class="btn btn-primary view-btn" data-id="<?= $row['Event_ID'] ?>">View</button>
+                                            <?php if (can_manage_event($row['E_Type'])): ?>
+                                                <button class="btn btn-warning update-btn" data-id="<?= $row['Event_ID'] ?>">Update</button>
+                                                <button class="btn btn-danger delete-btn" data-id="<?= $row['Event_ID'] ?>">Delete</button>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
                                     </tbody>
                                 </table>
                             </div>
