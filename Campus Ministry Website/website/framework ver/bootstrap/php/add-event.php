@@ -30,12 +30,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handle file upload
     $fileRef = null;
     if (isset($_FILES['excelFile']) && $_FILES['excelFile']['error'] == 0) {
-        $uploadDir = '../Evaluation Forms/';
-        $fileRef = $uploadDir . basename($_FILES['excelFile']['name']);
+        //Determine the upload folder based on the event type
+        $baseUploadDir = '../Evaluation Forms/';
+        $eventFolders = [
+            "Retreat" => "Retreat/",
+            "Recollection 01" => "Recollection 01/",
+            "Recollection 02" => "Recollection 02/",
+        ];
 
+        if (array_key_exists($eventType, $eventFolders)) {
+            $uploadDir = $baseUploadDir . $eventFolders[$eventType];
+        } else {
+            echo "Invalid event type.";
+            exit;
+        }
+
+        // Ensure the directory exists
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
+
+        $fileRef = $uploadDir . basename($_FILES['excelFile']['name']);
 
         if (!move_uploaded_file($_FILES['excelFile']['tmp_name'], $fileRef)) {
             echo "File upload failed.";
