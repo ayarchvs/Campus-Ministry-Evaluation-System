@@ -20,7 +20,7 @@ unset($_SESSION['login_email']);
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-primary" style="background-image: url('assets/img/background.jpg'); background-size: cover; background-position: center;">
+    <body class="bg-primary" style="background-image: url('assets/img/login.jpg'); background-size: cover; background-position: center;">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
