@@ -36,14 +36,12 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 Retreat Evaluation Charts
-                                <a target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a>
-                                .
                             </div>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-area me-1"></i>
-                                Area Chart Example
+                                Area Chart
                             </div>
                             <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
                             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
@@ -53,7 +51,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
+                                        Bar Chart
                                     </div>
                                     <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
                                     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
@@ -63,7 +61,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-pie me-1"></i>
-                                        Pie Chart Example
+                                        Pie Chart
                                     </div>
                                     <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
                                     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
@@ -75,7 +73,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">Copyright &copy; Your Website 2024</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
