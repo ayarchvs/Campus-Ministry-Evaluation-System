@@ -1,4 +1,6 @@
 <?php
+// access_control.php
+
 function is_admin() {
     return isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
 }
@@ -14,6 +16,10 @@ function get_allowed_event_types() {
     if (is_admin()) {
         return ['Retreat', 'Recollection 01', 'Recollection 02'];
     }
-    return [$_SESSION['event_type']];
+    return isset($_SESSION['event_type']) ? [$_SESSION['event_type']] : [];
+}
+
+function can_add_staff() {
+    return is_admin();
 }
 ?>

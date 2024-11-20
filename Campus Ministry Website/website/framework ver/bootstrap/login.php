@@ -22,22 +22,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['is_admin'] = $user['is_admin'];
                 $_SESSION['event_type'] = $user['S_Type'];
 
-
                 header("Location: main-page.php");
                 exit;
             } else {
-                $error = "Invalid password";
+                $_SESSION['login_error'] = "Invalid password";
             }
         } else {
-            $error = "Account not found";
+            $_SESSION['login_error'] = "Account not found";
         }
 
         $stmt->close();
     } else {
-        $error = "Both email and password are required.";
+        $_SESSION['login_error'] = "Both email and password are required.";
     }
+
+    $_SESSION['login_email'] = $email;
+    header("Location: index.php");
+    exit;
 }
 
 mysqli_close($conn);
-
 ?>

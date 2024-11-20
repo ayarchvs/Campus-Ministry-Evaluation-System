@@ -1,6 +1,15 @@
 <?php
+// add-staff.php
 
-include "../config/config.php";  // Include your DB connection
+include "../config/config.php";
+include "../access_control.php";
+session_start();
+
+// Check if the user is an admin
+if (!can_add_staff()) {
+    echo json_encode(['status' => 'error', 'message' => 'You do not have permission to add staff members.']);
+    exit;
+}
 
 if (isset($_POST['staffFirstName'], $_POST['staffLastName'], $_POST['staffType'], $_POST['staffEmail'], $_POST['staffPassword'])) {
     // Retrieve posted data
