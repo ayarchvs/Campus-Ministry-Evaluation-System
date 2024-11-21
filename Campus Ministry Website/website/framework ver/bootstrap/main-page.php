@@ -66,20 +66,20 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         
-                                            <th>Event Date</th>
+                                            <th>Event Date (YYYY/MM/DD)</th>
                                             <th>Event Type</th>
                                             <th>Religion</th>
-                                            <th>Location</th>
+                                            <th>Venue</th>
                                             <th>Created By</th>
                                             <th >Actions</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Event Date</th>
+                                            <th>Event Date (YYYY/MM/DD)</th>
                                             <th>Event Type</th>
                                             <th>Religion</th>
-                                            <th>Location</th>
+                                            <th>Venue</th>
                                             <th>Created By</th>
                                             <th>Actions</th>
                                         </tr>
