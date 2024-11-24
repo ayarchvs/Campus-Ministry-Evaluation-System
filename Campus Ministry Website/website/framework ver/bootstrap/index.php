@@ -28,7 +28,10 @@ unset($_SESSION['login_email']);
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <div class="card-header text-center">
+                                        <img src="assets/img/CMOlogo.png" alt="Logo" style="max-width: 300px; margin-bottom: 10px;">
+                                        <h3 class="font-weight-light my-4">Login</h3>
+                                    </div>
                                     <div class="card-body">
                                         <?php if ($error): ?>
                                             <div class="alert alert-danger"><?php echo $error; ?></div>
@@ -59,7 +62,7 @@ unset($_SESSION['login_email']);
                 </main>
             </div>
             <div id="layoutAuthentication_footer">
-                <footer class="py-4  mt-auto">
+                <footer class="py-4 mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Your Website 2023</div>
